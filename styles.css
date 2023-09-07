@@ -42,6 +42,13 @@ a {
     padding-top: 0px;
 }
 
+.header-writings {
+    background-color:#023020;
+    padding: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
 .header-text .text-one {
     color: #f9faf8;
     font-size: 40px;
@@ -76,6 +83,7 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
 }
 
 .header-img {
@@ -84,8 +92,15 @@ a {
 }
 
 .header-text {
-    width: 400px;
+    width: 600px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header-text button {
+    width: 80px;
 }
 
 .header-text .text-two {
