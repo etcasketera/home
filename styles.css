@@ -5,6 +5,7 @@ body {
     justify-content: space-between;
     margin: 0;
     font-family: 'Playfair Display', serif;
+    background-color:#1f372c;
 }
 
 ul {
@@ -159,8 +160,9 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 75px 150px;
+    padding: 50px 125px;
     gap: 10px;
+    margin: 30px;
 }
 
 .content-two .text-one {
