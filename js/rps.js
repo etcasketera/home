@@ -38,9 +38,29 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-console.log(playRound(playerSelection, computerSelection));
-console.log(playRound(playerSelection, computerSelection));
-console.log(playRound(playerSelection, computerSelection));
+
+function game () {
+    let playerWins = 0;
+    let computerWins = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Enter your move: ");
+        let computerSelection = getComputerChoice();
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round);
+        if (round.includes("win")){
+            playerWins += 1;
+        } else if (round.includes("lose")) {
+            computerWins += 1;
+        }
+        console.log(playerWins, " - ", computerWins);
+    }
+    if (playerWins > computerWins) {
+        console.log ("You win!")
+    } else if (playerWins < computerWins) {
+        console.log ("You lose!")
+    } else {
+        console.log ("You tied!");
+    }
+}
+
+game();
