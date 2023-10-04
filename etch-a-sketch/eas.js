@@ -10,7 +10,9 @@ function removeDivs() {
 }
 
 function makeGrid(num) {
-    const b_s = (1000/num)
+    const wwidth = window.innerWidth
+
+    const b_s = (wwidth/num)
     const box_size = b_s.toString() + 'px'
 
     for(i = 0; i < num; i++){
@@ -45,6 +47,7 @@ const container = document.querySelector('#container')
 
 const ctrlButton = document.createElement('button')
 ctrlButton.textContent = "Make a grid"
+ctrlButton.style.margin = '10px'
 ctrlButton.addEventListener('click', () => {
     let num = prompt("Please enter a number between 1 and 100")
     if(isNaN(num) || num > 100){
