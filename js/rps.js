@@ -38,29 +38,36 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
+const container = document.querySelector('#container')
 
-function game () {
-    let playerWins = 0;
-    let computerWins = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter your move: ");
-        let computerSelection = getComputerChoice();
-        let round = playRound(playerSelection, computerSelection);
-        console.log(round);
-        if (round.includes("win")){
-            playerWins += 1;
-        } else if (round.includes("lose")) {
-            computerWins += 1;
-        }
-        console.log(playerWins, " - ", computerWins);
-    }
-    if (playerWins > computerWins) {
-        console.log ("You win!")
-    } else if (playerWins < computerWins) {
-        console.log ("You lose!")
-    } else {
-        console.log ("You tied!");
-    }
-}
+const rock = document.createElement('button')
+rock.textContent = "Rock"
 
-game();
+const scissors = document.createElement('button')
+scissors.textContent = "Scissors"
+
+const paper = document.createElement('button')
+paper.textContent = "Paper"
+
+container.appendChild(rock)
+container.appendChild(paper)
+container.appendChild(scissors)
+
+
+const buttons = document.querySelectorAll('button')
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.textContent)
+    })
+})
+
+// const score = document.createElement('div')
+// score.classList.add("score")
+// score.style.backgroundColor = 'pink'
+// score.style.border = 'thick solid black'
+// const header1 = document.createElement('h1')
+// header1.classList.add('heading1')
+// header1.textContent = "I'm in a div"
+// score.appendChild(header1)
+// console.log(score)
+// container.appendChild(score)
