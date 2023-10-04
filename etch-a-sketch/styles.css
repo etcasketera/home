@@ -1,0 +1,16 @@
+
+#container {
+    border-width: 10px;
+    border-color: black;
+}
+
+.big-box {
+    display: flex;
+}
+.small-box{
+    background-color: grey;
+}
+
+.hovering {
+    background-color: blue
+}
