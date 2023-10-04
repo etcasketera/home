@@ -11,9 +11,7 @@ function removeDivs() {
 
 function makeGrid(num) {
     const b_s = (1000/num)
-    console.log(b_s)
     const box_size = b_s.toString() + 'px'
-    console.log(box_size)
 
     for(i = 0; i < num; i++){
         const newDiv = document.createElement('div')
