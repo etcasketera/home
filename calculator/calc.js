@@ -83,9 +83,16 @@ nine.style.border = 'thin solid black'
 const equivalence = document.createElement('button')
 equivalence.classList.add('equal')
 equivalence.textContent = '='
+const dec = document.createElement('button')
+dec.classList.add('dec')
+dec.classList.add('nummer')
+dec.textContent = '.'
 const clear = document.createElement('button')
 clear.classList.add('clear')
 clear.textContent = 'C'
+const back = document.createElement('button')
+back.classList.add('back')
+back.textContent = "BACK"
 
 row1.appendChild(seven)
 row1.appendChild(eight)
@@ -96,7 +103,7 @@ row2.appendChild(six)
 row3.appendChild(one)
 row3.appendChild(two)
 row3.appendChild(three)
-row4.appendChild(clear)
+row4.appendChild(dec)
 row4.appendChild(zero)
 row4.appendChild(equivalence)
 
@@ -104,7 +111,8 @@ num_holder.appendChild(row1)
 num_holder.appendChild(row2)
 num_holder.appendChild(row3)
 num_holder.appendChild(row4)
-
+num_holder.appendChild(clear)
+num_holder.appendChild(back)
 const calc_display = document.createElement('div')
 calc_display.classList.add('calc_display')
 calc_display.textContent = ''
@@ -144,6 +152,9 @@ let oper = ""
 const num_buttons = document.querySelectorAll('.nummer')
 num_buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
+        if(calc_display.textContent == "ERROR: EQUALS"){
+            calc_display.textContent = ""
+        }
         calc_display.textContent += btn.textContent
         if(display_val){
             first_num += btn.textContent
@@ -157,6 +168,7 @@ num_buttons.forEach((btn) => {
 const oper_buttons = document.querySelectorAll('.operator')
 oper_buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
+        dec.disabled = false
         if(second_num != ""){
             if(btn.textContent == '/' && second_num == '0'){
                 calc_display.textContent = "ERROR: DIV0"
@@ -178,12 +190,18 @@ oper_buttons.forEach((btn) => {
 
 const eqbtn = document.querySelector('.equal')
 eqbtn.addEventListener('click', () => {
-    if(first_num == "" || oper == "" || second_num == "")
-    console.log(first_num, oper, second_num)
-    display_val = true
-    if(oper == '/' && second_num == '0'){
-        calc_display.textContent = "ERROR: DIV0"
+    dec.disabled = false
+    if(first_num == "" || oper == "" || second_num == ""){
+        first_num = ""
+        second_num = ""
+        oper = ""
+        calc_display.textContent = "ERROR: EQUALS"
+        display_val = true
     }else{
+        display_val = true
+        if(oper == '/' && second_num == '0'){
+            calc_display.textContent = "ERROR: DIV0"
+        }else{
         first_num = operate(parseFloat(first_num), oper, parseFloat(second_num))
         if(first_num % 1 != 0){
             first_num = first_num.toFixed(4)
@@ -193,8 +211,7 @@ eqbtn.addEventListener('click', () => {
         oper=""
         calc_display.textContent = first_num
     }
-
-
+    }
 })
 
 const clbtn = document.querySelector('.clear')
@@ -203,4 +220,19 @@ clbtn.addEventListener('click', () => {
     second_num = ""
     oper = ""
     calc_display.textContent = ""
+    display_val = true
+})
+
+dec.addEventListener('click', () => {
+    console.log(dec)
+    dec.disabled = true
+})
+back.addEventListener('click', () => {
+    if(display_val){
+        first_num = first_num.substring(0, first_num.length - 1)
+        calc_display.textContent = calc_display.textContent.substring(0, calc_display.textContent.length - 1)
+    }else{
+        second_num = second_num.substring(0, second_num.length - 1)
+        calc_display.textContent = calc_display.textContent.substring(0, calc_display.textContent.length - 1)
+    }
 })

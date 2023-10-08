@@ -2,6 +2,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .operator {
@@ -25,9 +26,24 @@
 button {
     height: 50px;
     width: 50px;
+    font-size: 30px;
 }
 
 .calc_display {
     height: 50px;
     font-size: 50px;
+}
+
+.clear {
+    width: 150px;
+    background-color: red;
+}
+
+.equal {
+    background-color: green;
+}
+
+.back {
+    background-color: blue;
+    width: 150px;
 }
