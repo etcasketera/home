@@ -1,6 +1,33 @@
+#container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.operator {
+    background-color: orange;
+}
 
 .num_holder {
     border-width: 10px;
     border-color: black;
-    height: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.calc_holder {
+    display: flex;
+}
+.operations {
+    display: flex;
+    flex-direction:column;
+}
+button {
+    height: 50px;
+    width: 50px;
+}
+
+.calc_display {
+    height: 50px;
+    font-size: 50px;
 }
