@@ -68,14 +68,19 @@ const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         console.log(playRound(button.textContent, getComputerChoice()))
-        cs_num.textContent = cs_score
-        ps_num.textContent = ps_score
+        
         if(cs_num.textContent == 5) {
             alert("You lose!")
+            cs_score = 0
+            ps_score = 0
         }
         else if(ps_num.textContent == 5) {
             alert("You win!")
+            cs_score = 0
+            ps_score = 0
         }    
+        cs_num.textContent = cs_score
+        ps_num.textContent = ps_score
     })
 })
 
